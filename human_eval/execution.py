@@ -55,12 +55,12 @@ def check_correctness(problem: Dict, completion: str, timeout: float,
 # information on how OpenAI sandboxes its code, see the accompanying paper.
 # Once you have read this disclaimer and taken appropriate precautions, 
 # uncomment the following line and proceed at your own risk:
-#                         exec(check_program, exec_globals)
+                         exec(check_program, exec_globals)
                 result.append("passed")
             except TimeoutException:
                 result.append("timed out")
             except BaseException as e:
-                result.append(f"failed: {e}")
+                result.append(f"failed: {e} (type: {type(e).__name__})")
 
             # Needed for cleaning up.
             shutil.rmtree = rmtree
